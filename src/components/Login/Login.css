@@ -1,0 +1,27 @@
+.googleSignIn{
+    padding: 10px 30px;
+    border: 1px solid dimgray;
+    display: block;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+.googleSignIn img{
+    height: 20px;
+    width:40px;
+    margin: 0;
+    display: block;
+    padding: 0 10px;
+}
+.googleSignIn p{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.signInBox{
+    height:400px;
+    width:400px;
+    border:2px solid dimgray;
+    margin-left:500px;
+    margin-bottom: 50px;
+}
