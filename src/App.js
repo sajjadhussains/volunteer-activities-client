@@ -34,10 +34,10 @@ const App = () => {
          <Route path="/blog">
            <Blog></Blog>
          </Route>
-         <PrivateRoute path="/event/:title">
+         <PrivateRoute path="/event">
            <Event></Event>
          </PrivateRoute>
-         <PrivateRoute path="/register">
+         <PrivateRoute path="/register/:id">
            <Register></Register>
          </PrivateRoute>
          <Route path="/admin">

@@ -1,27 +1,37 @@
-import React from 'react';
-import { Card,Row } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
-const Volunteer = ({charity}) => {
-  const history = useHistory()
-  const handleChangeVolunteer = (title) => {
-      history.push(`/event/${title}`);
-  }
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
+import fakeData from '../../fakeData';
+
+const Volunteer=()=>{
+  const [loggedInUser,setLoggedInUser]=useContext(UserContext);
+
+  const handleClick = (volunteerName,picture) =>{
+    const newUser = {...loggedInUser}
+    newUser.volunteer = volunteerName;
+    newUser.volunteerPhoto = picture;
+    setLoggedInUser(newUser)
+}
     return (
-            <div onClick={()=>handleChangeVolunteer(charity.title)}className="col-sm-3 container">
-                    <Card>
-                      <Card.Img variant="top" src={charity.image} />
-                      <Card.Body style={{backgroundColor:'orange'}}>
-                      <Card.Text>
-                         <h3>{charity.title}</h3>
-                    </Card.Text>
-                      </Card.Body>
-                    </Card>
-                    <br />
-                    <Card>
-                        
-                    </Card>
-                  </div>
+      <div>
+      <div className="row justify-content-around">
+          {
+              fakeData.map(charity =>{
+               return   <Link key = {charity.id} onClick = {() => handleClick(charity.title, charity.image)} to = {`/register/${charity.id}`} className="col-sm-3 nav-link">
+                          <div>
+                              <div>
+                                  <img src={charity.image} className = 'w-100' alt=""/>
+                              </div>
+                              <div>
+                                      <h3 style = {{backgroundColor:'orange' }} className = 'p-2 text-white'> {charity.title} </h3>
+                              </div>
+                          </div>
+                  </Link>
+              })
+          }
+      </div>
+  </div>
        
     );
 };
